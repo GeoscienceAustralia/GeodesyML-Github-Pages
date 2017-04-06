@@ -1,0 +1,2591 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for geodeticMonument.xsd</title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_geodeticMonument.xsd', 
+				'properties_geodeticMonument', 
+				'properties_baseGeodeticMonumentType_type', 
+				'properties_baseGeodeticMonumentType_commonName', 
+				'properties_baseGeodeticMonumentType_characterIdentifier', 
+				'properties_baseGeodeticMonumentType_inscription', 
+				'properties_baseGeodeticMonumentType_iersDomesNumber', 
+				'properties_baseGeodeticMonumentType_cdpNumber', 
+				'properties_baseGeodeticMonumentType_ngsPID', 
+				'properties_baseGeodeticMonumentType_verbalLocation', 
+				'properties_baseGeodeticMonumentType_geodeticPosition', 
+				'properties_baseGeodeticMonumentType_nearestCity', 
+				'properties_baseGeodeticMonumentType_territory', 
+				'properties_baseGeodeticMonumentType_country', 
+				'properties_baseGeodeticMonumentType_monumentHeight', 
+				'properties_baseGeodeticMonumentType_monumentFoundation', 
+				'properties_baseGeodeticMonumentType_monumentFoundationDepth', 
+				'properties_baseGeodeticMonumentType_geologicCharacteristics', 
+				'properties_baseGeodeticMonumentType');
+var facetsBoxes= new Array('facets_baseGeodeticMonumentType_characterIdentifier', 
+				'facets_baseGeodeticMonumentType_ngsPID', 
+				'facets_baseGeodeticMonumentType_monumentHeight', 
+				'facets_baseGeodeticMonumentType_monumentFoundationDepth', 
+				'facets_geodeticMonumentTypeOfType', 
+				'facets_geodeticMonumentFoundationTypeOfType');
+var usedByBoxes= new Array('usedBy_geodeticMonument', 
+				'usedBy_baseGeodeticMonumentType');
+var sourceBoxes= new Array('source_geodeticMonument', 
+				'source_baseGeodeticMonumentType_type', 
+				'source_baseGeodeticMonumentType_commonName', 
+				'source_baseGeodeticMonumentType_characterIdentifier', 
+				'source_baseGeodeticMonumentType_inscription', 
+				'source_baseGeodeticMonumentType_iersDomesNumber', 
+				'source_baseGeodeticMonumentType_cdpNumber', 
+				'source_baseGeodeticMonumentType_ngsPID', 
+				'source_baseGeodeticMonumentType_verbalLocation', 
+				'source_baseGeodeticMonumentType_geodeticPosition', 
+				'source_baseGeodeticMonumentType_nearestCity', 
+				'source_baseGeodeticMonumentType_territory', 
+				'source_baseGeodeticMonumentType_country', 
+				'source_baseGeodeticMonumentType_monumentHeight', 
+				'source_baseGeodeticMonumentType_monumentFoundation', 
+				'source_baseGeodeticMonumentType_monumentFoundationDepth', 
+				'source_baseGeodeticMonumentType_geologicCharacteristics', 
+				'source_geodeticMonumentTypeOfType', 
+				'source_geodeticMonumentFoundationTypeOfType', 
+				'source_baseGeodeticMonumentType', 
+				'source_geodeticMonumentPropertyType');
+var instanceBoxes= new Array('instance_geodeticMonument', 
+				'instance_baseGeodeticMonumentType_geodeticPosition');
+var diagramBoxes= new Array('diagram_geodeticMonument', 
+				'diagram_baseGeodeticMonumentType_type', 
+				'diagram_baseGeodeticMonumentType_commonName', 
+				'diagram_baseGeodeticMonumentType_characterIdentifier', 
+				'diagram_baseGeodeticMonumentType_inscription', 
+				'diagram_baseGeodeticMonumentType_iersDomesNumber', 
+				'diagram_baseGeodeticMonumentType_cdpNumber', 
+				'diagram_baseGeodeticMonumentType_ngsPID', 
+				'diagram_baseGeodeticMonumentType_verbalLocation', 
+				'diagram_baseGeodeticMonumentType_geodeticPosition', 
+				'diagram_baseGeodeticMonumentType_nearestCity', 
+				'diagram_baseGeodeticMonumentType_territory', 
+				'diagram_baseGeodeticMonumentType_country', 
+				'diagram_baseGeodeticMonumentType_monumentHeight', 
+				'diagram_baseGeodeticMonumentType_monumentFoundation', 
+				'diagram_baseGeodeticMonumentType_monumentFoundationDepth', 
+				'diagram_baseGeodeticMonumentType_geologicCharacteristics', 
+				'diagram_geodeticMonumentTypeOfType', 
+				'diagram_geodeticMonumentFoundationTypeOfType', 
+				'diagram_baseGeodeticMonumentType', 
+				'diagram_geodeticMonumentPropertyType');
+var annotationBoxes= new Array('annotations_baseGeodeticMonumentType');
+var modelBoxes= new Array('model_geodeticMonument', 
+				'model_baseGeodeticMonumentType_geodeticPosition', 
+				'model_baseGeodeticMonumentType', 
+				'model_geodeticMonumentPropertyType');
+
+      
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    
+                    //--></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, facetsBoxes);" class="control" /></span><span class="globalControlName">Facets </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, instanceBoxes);" class="control" /></span><span class="globalControlName">Instances</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, modelBoxes);" class="control" /></span><span class="globalControlName">Model </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, propertiesBoxes);" class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="geodeticMonument.xsd"></a><div class="componentTitle">Included schema <span class="qname">geodeticMonument.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_geodeticMonument.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_geodeticMonument.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_geodeticMonument.xsd" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">attribute form default</td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">element form default</td>
+                                    <td><b>qualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">version</td>
+                                    <td><b>0.4</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="geodeticMonument"></a><div class="componentTitle">Element <span class="qname">geo:geodeticMonument</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_geodeticMonument" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_geodeticMonument');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_geodeticMonument" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_geodeticMonument.jpeg" usemap="#geodeticMonument_xsd_Element_geo_geodeticMonument" /><map name="geodeticMonument_xsd_Element_geo_geodeticMonument" id="geodeticMonument_xsd_Element_geo_geodeticMonument">
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_type" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_type" coords="247,40,290,64" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_commonName" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_commonName" coords="247,74,355,98" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_characterIdentifier" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_characterIdentifier" coords="247,108,377,132" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_inscription" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_inscription" coords="247,142,336,166" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_iersDomesNumber" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_iersDomesNumber" coords="247,176,378,200" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_cdpNumber" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_cdpNumber" coords="247,210,341,234" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_ngsPID" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_ngsPID" coords="247,244,315,268" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_verbalLocation" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_verbalLocation" coords="247,278,357,302" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_geodeticPosition" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_geodeticPosition" coords="247,312,367,336" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_nearestCity" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_nearestCity" coords="247,346,339,370" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_territory" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_territory" coords="247,380,323,404" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_country" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_country" coords="247,414,320,438" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_monumentHeight" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentHeight" coords="247,448,371,472" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_monumentFoundation" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentFoundation" coords="247,482,386,506" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_monumentFoundationDepth" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentFoundationDepth" coords="247,516,429,540" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_geologicCharacteristics" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_geologicCharacteristics" coords="247,550,405,574" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType" href="geodeticMonument_xsd.html#baseGeodeticMonumentType" coords="165,3,394,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type hierarchy</b></td>
+                        <td>
+                           <ul class="internal">
+                              <li class="internal"><b>AbstractFeatureType</b><ul class="internal">
+                                    <li class="internal"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_geodeticMonument" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_geodeticMonument');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_geodeticMonument" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Substitution Group Affiliation</b></td>
+                        <td>
+                           <ul class="internal">
+                              <li class="internal"><b>AbstractFeature</b></li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_geodeticMonument" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_geodeticMonument');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_geodeticMonument" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="geodeticMonument_xsd.html#geodeticMonumentPropertyType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:geodeticMonumentPropertyType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_geodeticMonument" type="image" src="img/btM.gif" value="-" onclick="switchState('model_geodeticMonument');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_geodeticMonument" style="display:block"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_type" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:type{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_commonName" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:commonName{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_characterIdentifier" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:characterIdentifier</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_inscription" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:inscription{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_iersDomesNumber" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:iersDomesNumber{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_cdpNumber" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:cdpNumber{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_ngsPID" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:ngsPID{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_verbalLocation" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:verbalLocation{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_geodeticPosition" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:geodeticPosition</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_nearestCity" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:nearestCity{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_territory" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:territory{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_country" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:country</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentHeight" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:monumentHeight{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentFoundation" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:monumentFoundation{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentFoundationDepth" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:monumentFoundationDepth{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_geologicCharacteristics" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:geologicCharacteristics{0,1}</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_cdpNumber" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:cdpNumber</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_characterIdentifier" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:characterIdentifier</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_commonName" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:commonName</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_country" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:country</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_geodeticPosition" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:geodeticPosition</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_geologicCharacteristics" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:geologicCharacteristics</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_iersDomesNumber" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:iersDomesNumber</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_inscription" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:inscription</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentFoundation" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:monumentFoundation</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentFoundationDepth" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:monumentFoundationDepth</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentHeight" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:monumentHeight</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_nearestCity" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:nearestCity</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_ngsPID" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:ngsPID</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_territory" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:territory</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_type" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:type</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_verbalLocation" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:verbalLocation</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_geodeticMonument" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_geodeticMonument');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_geodeticMonument" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;geo:geodeticMonument</span><span class="tT"> </span><span class="tAN">xmlns:geo=</span><span class="tAV">"urn:xml-gov-au:icsm:egeodesy:0.4"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:type</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:type&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:commonName</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:commonName&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:characterIdentifier</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/geo:characterIdentifier&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:inscription</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:inscription&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:iersDomesNumber</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:iersDomesNumber&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:cdpNumber</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:cdpNumber&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:ngsPID</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:ngsPID&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:verbalLocation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:verbalLocation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:geodeticPosition</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/geo:geodeticPosition&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:nearestCity</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:nearestCity&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:territory</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:territory&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:country</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/geo:country&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:monumentHeight</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:monumentHeight&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:monumentFoundation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:monumentFoundation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:monumentFoundationDepth</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:monumentFoundationDepth&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:geologicCharacteristics</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:geologicCharacteristics&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/geo:geodeticMonument&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_geodeticMonument" type="image" src="img/btM.gif" value="-" onclick="switchState('source_geodeticMonument');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_geodeticMonument" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> name=</span><span class="tAV">"geodeticMonument"</span><span class="tAN"> substitutionGroup=</span><span class="tAV">"gml:AbstractFeature"</span><span class="tAN"> type=</span><span class="tAV">"geo:baseGeodeticMonumentType"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_type"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:type</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_type" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_type');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_type" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_type.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>CodeType</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_type" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_type" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_type" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_type" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"type"</span><span class="tAN"> type=</span><span class="tAV">"gml:CodeType"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_commonName"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:commonName</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_commonName" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_commonName');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_commonName" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_commonName.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_commonName" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_commonName');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_commonName" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_commonName" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_commonName');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_commonName" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"commonName"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_characterIdentifier"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:characterIdentifier</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_characterIdentifier" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_characterIdentifier');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_characterIdentifier" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_characterIdentifier.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_characterIdentifier" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_characterIdentifier');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_characterIdentifier" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_baseGeodeticMonumentType_characterIdentifier" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_baseGeodeticMonumentType_characterIdentifier');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_baseGeodeticMonumentType_characterIdentifier" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">length</td>
+                                    <td width="30%"><b>4</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_characterIdentifier" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_characterIdentifier');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_characterIdentifier" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> name=</span><span class="tAV">"characterIdentifier"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;restriction</span><span class="tAN"> base=</span><span class="tAV">"string"</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;length</span><span class="tAN"> value=</span><span class="tAV">"4"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/restriction&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_inscription"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:inscription</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_inscription" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_inscription');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_inscription" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_inscription.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_inscription" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_inscription');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_inscription" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_inscription" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_inscription');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_inscription" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"inscription"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_iersDomesNumber"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:iersDomesNumber</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_iersDomesNumber" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_iersDomesNumber');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_iersDomesNumber" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_iersDomesNumber.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_iersDomesNumber" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_iersDomesNumber');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_iersDomesNumber" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_iersDomesNumber" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_iersDomesNumber');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_iersDomesNumber" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"iersDomesNumber"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_cdpNumber"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:cdpNumber</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_cdpNumber" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_cdpNumber');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_cdpNumber" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_cdpNumber.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_cdpNumber" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_cdpNumber');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_cdpNumber" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_cdpNumber" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_cdpNumber');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_cdpNumber" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"cdpNumber"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_ngsPID"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:ngsPID</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_ngsPID" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_ngsPID');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_ngsPID" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_ngsPID.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_ngsPID" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_ngsPID');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_ngsPID" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_baseGeodeticMonumentType_ngsPID" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_baseGeodeticMonumentType_ngsPID');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_baseGeodeticMonumentType_ngsPID" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">length</td>
+                                    <td width="30%"><b>6</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_ngsPID" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_ngsPID');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_ngsPID" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"ngsPID"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;restriction</span><span class="tAN"> base=</span><span class="tAV">"string"</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;length</span><span class="tAN"> value=</span><span class="tAV">"6"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/restriction&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_verbalLocation"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:verbalLocation</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_verbalLocation" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_verbalLocation');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_verbalLocation" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_verbalLocation.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_verbalLocation" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_verbalLocation');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_verbalLocation" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_verbalLocation" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_verbalLocation');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_verbalLocation" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"verbalLocation"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_geodeticPosition"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:geodeticPosition</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_geodeticPosition" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_geodeticPosition');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_geodeticPosition" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_geodeticPosition.jpeg" usemap="#geodeticMonument_xsd_Element_geo_geodeticPosition" /><map name="geodeticMonument_xsd_Element_geo_geodeticPosition" id="geodeticMonument_xsd_Element_geo_geodeticPosition">
+                                 <area alt="observationSystem_xsd.tmp#Position" href="observationSystem_xsd.html#Position" coords="304,133,401,157" />
+                                 <area alt="observationSystem_xsd.tmp#PositionTimeSeries" href="observationSystem_xsd.html#PositionTimeSeries" coords="304,171,459,195" />
+                                 <area alt="observationSystem_xsd.tmp#PositionPropertyType_TimeSlice" href="observationSystem_xsd.html#PositionPropertyType_TimeSlice" coords="304,205,374,229" />
+                                 <area alt="observationSystem_xsd.tmp#PositionPropertyType" href="observationSystem_xsd.html#PositionPropertyType" coords="151,3,340,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="observationSystem_xsd.html#PositionPropertyType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for observationSystem.xsd')">geo:PositionPropertyType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_geodeticPosition" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_geodeticPosition');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_geodeticPosition" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_baseGeodeticMonumentType_geodeticPosition" type="image" src="img/btM.gif" value="-" onclick="switchState('model_baseGeodeticMonumentType_geodeticPosition');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_baseGeodeticMonumentType_geodeticPosition" style="display:block">(<b><a href="observationSystem_xsd.html#Position" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for observationSystem.xsd')">geo:Position</a></b>) | (<b><a href="observationSystem_xsd.html#PositionTimeSeries" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for observationSystem.xsd')">geo:PositionTimeSeries{0,1}</a></b> , <b><a href="observationSystem_xsd.html#PositionPropertyType_TimeSlice" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for observationSystem.xsd')">geo:TimeSlice</a></b>)
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="observationSystem_xsd.html#Position" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for observationSystem.xsd')">geo:Position</a></b>, <b><a href="observationSystem_xsd.html#PositionTimeSeries" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for observationSystem.xsd')">geo:PositionTimeSeries</a></b>, <b><a href="observationSystem_xsd.html#PositionPropertyType_TimeSlice" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for observationSystem.xsd')">geo:TimeSlice</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_baseGeodeticMonumentType_geodeticPosition" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_baseGeodeticMonumentType_geodeticPosition');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_baseGeodeticMonumentType_geodeticPosition" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;geo:geodeticPosition</span><span class="tT"> </span><span class="tAN">xmlns:geo=</span><span class="tAV">"urn:xml-gov-au:icsm:egeodesy:0.4"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:Position</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/geo:Position&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:PositionTimeSeries</span><span class="tT"> </span><span class="tAN">srsDimension=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">srsName=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:PositionTimeSeries&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:TimeSlice</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/geo:TimeSlice&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/geo:geodeticPosition&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_geodeticPosition" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_geodeticPosition');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_geodeticPosition" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> name=</span><span class="tAV">"geodeticPosition"</span><span class="tAN"> type=</span><span class="tAV">"geo:PositionPropertyType"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_nearestCity"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:nearestCity</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_nearestCity" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_nearestCity');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_nearestCity" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_nearestCity.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_nearestCity" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_nearestCity');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_nearestCity" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_nearestCity" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_nearestCity');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_nearestCity" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"nearestCity"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_territory"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:territory</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_territory" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_territory');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_territory" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_territory.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_territory" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_territory');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_territory" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_territory" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_territory');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_territory" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"territory"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_country"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:country</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_country" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_country');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_country" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_country.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_country" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_country');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_country" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_country" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_country');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_country" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> name=</span><span class="tAV">"country"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_monumentHeight"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:monumentHeight</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_monumentHeight" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_monumentHeight');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_monumentHeight" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_monumentHeight.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>decimal</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_monumentHeight" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_monumentHeight');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_monumentHeight" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_baseGeodeticMonumentType_monumentHeight" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_baseGeodeticMonumentType_monumentHeight');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_baseGeodeticMonumentType_monumentHeight" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">totalDigits</td>
+                                    <td width="30%"><b>6</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">fractionDigits</td>
+                                    <td width="30%"><b>4</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_monumentHeight" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_monumentHeight');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_monumentHeight" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"monumentHeight"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;restriction</span><span class="tAN"> base=</span><span class="tAV">"decimal"</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;totalDigits</span><span class="tAN"> value=</span><span class="tAV">"6"</span><span class="tEl">/&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;fractionDigits</span><span class="tAN"> value=</span><span class="tAV">"4"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/restriction&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_monumentFoundation"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:monumentFoundation</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_monumentFoundation" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_monumentFoundation');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_monumentFoundation" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_monumentFoundation.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>CodeType</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_monumentFoundation" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_monumentFoundation');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_monumentFoundation" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_monumentFoundation" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_monumentFoundation');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_monumentFoundation" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"monumentFoundation"</span><span class="tAN"> type=</span><span class="tAV">"gml:CodeType"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_monumentFoundationDepth"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:monumentFoundationDepth</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_monumentFoundationDepth" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_monumentFoundationDepth');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_monumentFoundationDepth" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_monumentFoundationDepth.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>decimal</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_monumentFoundationDepth" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_monumentFoundationDepth');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_monumentFoundationDepth" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_baseGeodeticMonumentType_monumentFoundationDepth" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_baseGeodeticMonumentType_monumentFoundationDepth');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_baseGeodeticMonumentType_monumentFoundationDepth" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">totalDigits</td>
+                                    <td width="30%"><b>6</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">fractionDigits</td>
+                                    <td width="30%"><b>4</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_monumentFoundationDepth" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_monumentFoundationDepth');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_monumentFoundationDepth" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"monumentFoundationDepth"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;restriction</span><span class="tAN"> base=</span><span class="tAV">"decimal"</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;totalDigits</span><span class="tAN"> value=</span><span class="tAV">"6"</span><span class="tEl">/&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;fractionDigits</span><span class="tAN"> value=</span><span class="tAV">"4"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/restriction&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType_geologicCharacteristics"></a><div class="componentTitle">Element <span class="qname"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b> / geo:geologicCharacteristics</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType_geologicCharacteristics" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType_geologicCharacteristics');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType_geologicCharacteristics" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Element_geo_geologicCharacteristics.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType_geologicCharacteristics" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType_geologicCharacteristics');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType_geologicCharacteristics" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType_geologicCharacteristics" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType_geologicCharacteristics');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType_geologicCharacteristics" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"geologicCharacteristics"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="geodeticMonumentTypeOfType"></a><div class="componentTitle">Simple Type <span class="qname">geo:geodeticMonumentTypeOfType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_geodeticMonumentTypeOfType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_geodeticMonumentTypeOfType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_geodeticMonumentTypeOfType" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Simple_Type_geo_geodeticMonumentTypeOfType.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_geodeticMonumentTypeOfType" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_geodeticMonumentTypeOfType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_geodeticMonumentTypeOfType" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>pillar</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>brass plate</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>steel mast</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>shallow rod / braced antenna mount</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>removeable tripod / concrete pad</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Wyatt/Agnew drilled-braced</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Wyatt/Agnew driven braced</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>rock-pin/metal-tripod</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>rock-pin</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>glued-rod</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>wall</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_geodeticMonumentTypeOfType" type="image" src="img/btM.gif" value="-" onclick="switchState('source_geodeticMonumentTypeOfType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_geodeticMonumentTypeOfType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;simpleType</span><span class="tAN"> name=</span><span class="tAV">"geodeticMonumentTypeOfType"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;restriction</span><span class="tAN"> base=</span><span class="tAV">"string"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"pillar"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"brass plate"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"steel mast"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"shallow rod / braced antenna mount"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"removeable tripod / concrete pad"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"Wyatt/Agnew drilled-braced"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"Wyatt/Agnew driven braced"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"rock-pin/metal-tripod"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"rock-pin"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"glued-rod"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"wall"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/restriction&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/simpleType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="geodeticMonumentFoundationTypeOfType"></a><div class="componentTitle">Simple Type <span class="qname">geo:geodeticMonumentFoundationTypeOfType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_geodeticMonumentFoundationTypeOfType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_geodeticMonumentFoundationTypeOfType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_geodeticMonumentFoundationTypeOfType" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Simple_Type_geo_geodeticMonumentFoundationTypeOfType.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_geodeticMonumentFoundationTypeOfType" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_geodeticMonumentFoundationTypeOfType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_geodeticMonumentFoundationTypeOfType" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>roof</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>concrete block</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>steel rods</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_geodeticMonumentFoundationTypeOfType" type="image" src="img/btM.gif" value="-" onclick="switchState('source_geodeticMonumentFoundationTypeOfType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_geodeticMonumentFoundationTypeOfType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;simpleType</span><span class="tAN"> name=</span><span class="tAV">"geodeticMonumentFoundationTypeOfType"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;restriction</span><span class="tAN"> base=</span><span class="tAV">"string"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"roof"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"concrete block"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;enumeration</span><span class="tAN"> value=</span><span class="tAV">"steel rods"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/restriction&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/simpleType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="baseGeodeticMonumentType"></a><div class="componentTitle">Complex Type <span class="qname">geo:baseGeodeticMonumentType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_baseGeodeticMonumentType" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_baseGeodeticMonumentType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_baseGeodeticMonumentType" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">Base geodetic monument class.  Can be extended..</span><span class="tI">
+</span><span class="tT">Cannot be substituted and is instantiable.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_baseGeodeticMonumentType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_baseGeodeticMonumentType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_baseGeodeticMonumentType" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Complex_Type_geo_baseGeodeticMonumentType.jpeg" usemap="#geodeticMonument_xsd_Complex_Type_geo_baseGeodeticMonumentType" /><map name="geodeticMonument_xsd_Complex_Type_geo_baseGeodeticMonumentType" id="geodeticMonument_xsd_Complex_Type_geo_baseGeodeticMonumentType">
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_type" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_type" coords="329,0,372,24" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_commonName" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_commonName" coords="329,34,437,58" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_characterIdentifier" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_characterIdentifier" coords="329,68,459,92" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_inscription" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_inscription" coords="329,102,418,126" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_iersDomesNumber" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_iersDomesNumber" coords="329,136,460,160" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_cdpNumber" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_cdpNumber" coords="329,170,423,194" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_ngsPID" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_ngsPID" coords="329,204,397,228" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_verbalLocation" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_verbalLocation" coords="329,238,439,262" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_geodeticPosition" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_geodeticPosition" coords="329,272,449,296" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_nearestCity" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_nearestCity" coords="329,306,421,330" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_territory" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_territory" coords="329,340,405,364" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_country" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_country" coords="329,374,402,398" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_monumentHeight" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentHeight" coords="329,408,453,432" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_monumentFoundation" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentFoundation" coords="329,442,468,466" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_monumentFoundationDepth" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentFoundationDepth" coords="329,476,511,500" />
+                                 <area alt="geodeticMonument_xsd.tmp#baseGeodeticMonumentType_geologicCharacteristics" href="geodeticMonument_xsd.html#baseGeodeticMonumentType_geologicCharacteristics" coords="329,510,487,534" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>extension of <b>AbstractFeatureType</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type hierarchy</b></td>
+                        <td>
+                           <ul class="internal">
+                              <li class="internal"><b>AbstractFeatureType</b><ul class="internal">
+                                    <li class="internal"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:baseGeodeticMonumentType</a></b></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_baseGeodeticMonumentType" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_baseGeodeticMonumentType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_baseGeodeticMonumentType" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">abstract</td>
+                                    <td><b>false</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">block</td>
+                                    <td><b>all</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_baseGeodeticMonumentType" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_baseGeodeticMonumentType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_baseGeodeticMonumentType" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="geodeticMonument_xsd.html#geodeticMonument" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:geodeticMonument</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_baseGeodeticMonumentType" type="image" src="img/btM.gif" value="-" onclick="switchState('model_baseGeodeticMonumentType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_baseGeodeticMonumentType" style="display:block"><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_type" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:type{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_commonName" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:commonName{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_characterIdentifier" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:characterIdentifier</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_inscription" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:inscription{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_iersDomesNumber" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:iersDomesNumber{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_cdpNumber" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:cdpNumber{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_ngsPID" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:ngsPID{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_verbalLocation" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:verbalLocation{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_geodeticPosition" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:geodeticPosition</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_nearestCity" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:nearestCity{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_territory" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:territory{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_country" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:country</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentHeight" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:monumentHeight{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentFoundation" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:monumentFoundation{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentFoundationDepth" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:monumentFoundationDepth{0,1}</a></b> , <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_geologicCharacteristics" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:geologicCharacteristics{0,1}</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_cdpNumber" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:cdpNumber</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_characterIdentifier" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:characterIdentifier</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_commonName" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:commonName</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_country" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:country</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_geodeticPosition" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:geodeticPosition</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_geologicCharacteristics" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:geologicCharacteristics</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_iersDomesNumber" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:iersDomesNumber</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_inscription" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:inscription</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentFoundation" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:monumentFoundation</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentFoundationDepth" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:monumentFoundationDepth</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_monumentHeight" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:monumentHeight</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_nearestCity" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:nearestCity</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_ngsPID" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:ngsPID</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_territory" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:territory</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_type" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:type</a></b>, <b><a href="geodeticMonument_xsd.html#baseGeodeticMonumentType_verbalLocation" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:verbalLocation</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_baseGeodeticMonumentType" type="image" src="img/btM.gif" value="-" onclick="switchState('source_baseGeodeticMonumentType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_baseGeodeticMonumentType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;complexType</span><span class="tAN"> abstract=</span><span class="tAV">"false"</span><span class="tAN"> block=</span><span class="tAV">"#all"</span><span class="tAN"> name=</span><span class="tAV">"baseGeodeticMonumentType"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Base geodetic monument class. Can be extended.. Cannot be substituted and is instantiable.</span><span class="tEl">&lt;/documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;complexContent</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;extension</span><span class="tAN"> base=</span><span class="tAV">"gml:AbstractFeatureType"</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;sequence</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- Monument Type --&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- TODO: use gco --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"type"</span><span class="tAN"> type=</span><span class="tAV">"gml:CodeType"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- Common Name --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"commonName"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- Common Character Identifier --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> name=</span><span class="tAV">"characterIdentifier"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;restriction</span><span class="tAN"> base=</span><span class="tAV">"string"</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;length</span><span class="tAN"> value=</span><span class="tAV">"4"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/restriction&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/simpleType&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/element&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- Inscription --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"inscription"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- IERS Domes Number --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"iersDomesNumber"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- CDP Number --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"cdpNumber"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- NGS PID --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"ngsPID"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;restriction</span><span class="tAN"> base=</span><span class="tAV">"string"</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;length</span><span class="tAN"> value=</span><span class="tAV">"6"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/restriction&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/simpleType&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/element&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- Verbal Location --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"verbalLocation"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- Geodetic Position --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> name=</span><span class="tAV">"geodeticPosition"</span><span class="tAN"> type=</span><span class="tAV">"geo:PositionPropertyType"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!--
+                    &lt;element name="geodeticPosition"&gt;
+                        &lt;complexType&gt;
+                            &lt;sequence&gt;
+                                &lt;element name="longitude"&gt;
+                                    &lt;simpleType&gt;
+                                        &lt;restriction base="decimal"&gt;
+                                            &lt;totalDigits value="11"/&gt;
+                                            &lt;fractionDigits value="8"/&gt;
+                                        &lt;/restriction&gt;
+                                    &lt;/simpleType&gt;
+                                &lt;/element&gt;
+                                &lt;element name="latitude"&gt;
+                                    &lt;simpleType&gt;
+                                        &lt;restriction base="decimal"&gt;
+                                            &lt;totalDigits value="10"/&gt;
+                                            &lt;fractionDigits value="8"/&gt;
+                                        &lt;/restriction&gt;
+                                    &lt;/simpleType&gt;
+                                &lt;/element&gt;
+                                &lt;element name="elevation"&gt;
+                                    &lt;simpleType&gt;
+                                        &lt;restriction base="decimal"&gt;
+                                            &lt;totalDigits value="9"/&gt;
+                                            &lt;fractionDigits value="4"/&gt;
+                                        &lt;/restriction&gt;
+                                    &lt;/simpleType&gt;
+                                &lt;/element&gt;
+                            &lt;/sequence&gt;
+                        &lt;/complexType&gt;
+                    &lt;/element&gt;
+                    --&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- City (nearest) --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"nearestCity"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- State, Province, Region, Territory --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"territory"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- Country --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> name=</span><span class="tAV">"country"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- Height (of the monument, in meters) --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"monumentHeight"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;restriction</span><span class="tAN"> base=</span><span class="tAV">"decimal"</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;totalDigits</span><span class="tAN"> value=</span><span class="tAV">"6"</span><span class="tEl">/&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;fractionDigits</span><span class="tAN"> value=</span><span class="tAV">"4"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/restriction&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/simpleType&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/element&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- Foundation --&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- TODO: use gco --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"monumentFoundation"</span><span class="tAN"> type=</span><span class="tAV">"gml:CodeType"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- Foundation Depth --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"monumentFoundationDepth"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;restriction</span><span class="tAN"> base=</span><span class="tAV">"decimal"</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;totalDigits</span><span class="tAN"> value=</span><span class="tAV">"6"</span><span class="tEl">/&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;fractionDigits</span><span class="tAN"> value=</span><span class="tAV">"4"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/restriction&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/simpleType&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/element&gt;</span><span class="tI">
+        </span><span class="tC">&lt;!-- Geologic Characteristics --&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"geologicCharacteristics"</span><span class="tAN"> type=</span><span class="tAV">"string"</span><span class="tEl">/&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/sequence&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/extension&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/complexContent&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/complexType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="geodeticMonumentPropertyType"></a><div class="componentTitle">Complex Type <span class="qname">geo:geodeticMonumentPropertyType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_geodeticMonumentPropertyType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_geodeticMonumentPropertyType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_geodeticMonumentPropertyType" style="display:block"><img alt="Diagram" border="0" src="img/geodeticMonument_xsd_Complex_Type_geo_geodeticMonumentPropertyType.jpeg" usemap="#geodeticMonument_xsd_Complex_Type_geo_geodeticMonumentPropertyType" /><map name="geodeticMonument_xsd_Complex_Type_geo_geodeticMonumentPropertyType" id="geodeticMonument_xsd_Complex_Type_geo_geodeticMonumentPropertyType">
+                                 <area alt="geodeticMonument_xsd.tmp#geodeticMonument" href="geodeticMonument_xsd.html#geodeticMonument" coords="329,93,486,117" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_geodeticMonumentPropertyType" type="image" src="img/btM.gif" value="-" onclick="switchState('model_geodeticMonumentPropertyType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_geodeticMonumentPropertyType" style="display:block"><b><a href="geodeticMonument_xsd.html#geodeticMonument" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:geodeticMonument</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="geodeticMonument_xsd.html#geodeticMonument" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodeticMonument.xsd')">geo:geodeticMonument</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_geodeticMonumentPropertyType" type="image" src="img/btM.gif" value="-" onclick="switchState('source_geodeticMonumentPropertyType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_geodeticMonumentPropertyType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;complexType</span><span class="tAN"> name=</span><span class="tAV">"geodeticMonumentPropertyType"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;sequence</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;element</span><span class="tAN"> ref=</span><span class="tAV">"geo:geodeticMonument"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/sequence&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"gml:AssociationAttributeGroup"</span><span class="tEl">/&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/complexType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/geodeticMonument.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
+         </div>
+      </div><script type="text/javascript">
+         <!--
+                     // The namespace is the selected option in the TOC combo.
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                //--></script></body>
+</html>

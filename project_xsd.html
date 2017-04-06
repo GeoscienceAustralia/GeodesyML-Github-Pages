@@ -1,0 +1,1166 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for project.xsd</title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_project.xsd', 
+				'properties_Project', 
+				'properties_ProjectType_status', 
+				'properties_ProjectType_managedBy', 
+				'properties_ProjectType_specifiedBy', 
+				'properties_ProjectType_initiatedDate', 
+				'properties_ProjectType_completedDate');
+var usedByBoxes= new Array('usedBy_Project', 
+				'usedBy_ProjectType', 
+				'usedBy_ProjectPropertyType');
+var sourceBoxes= new Array('source_Project', 
+				'source_ProjectType_status', 
+				'source_ProjectType_managedBy', 
+				'source_ProjectType_specifiedBy', 
+				'source_ProjectType_initiatedDate', 
+				'source_ProjectType_completedDate', 
+				'source_ProjectType', 
+				'source_ProjectPropertyType');
+var instanceBoxes= new Array('instance_Project');
+var diagramBoxes= new Array('diagram_Project', 
+				'diagram_ProjectType_status', 
+				'diagram_ProjectType_managedBy', 
+				'diagram_ProjectType_specifiedBy', 
+				'diagram_ProjectType_initiatedDate', 
+				'diagram_ProjectType_completedDate', 
+				'diagram_ProjectType', 
+				'diagram_ProjectPropertyType');
+var annotationBoxes= new Array('annotations_project.xsd');
+var modelBoxes= new Array('model_Project', 
+				'model_ProjectType', 
+				'model_ProjectPropertyType');
+
+      
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    
+                    //--></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, instanceBoxes);" class="control" /></span><span class="globalControlName">Instances</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, modelBoxes);" class="control" /></span><span class="globalControlName">Model </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, propertiesBoxes);" class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="project.xsd"></a><div class="componentTitle">Included schema <span class="qname">project.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_project.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_project.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_project.xsd" style="display:block">
+                              <div class="annotation"></div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_project.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_project.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_project.xsd" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">attribute form default</td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">element form default</td>
+                                    <td><b>qualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">version</td>
+                                    <td><b>0.4</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/project.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="Project"></a><div class="componentTitle">Element <span class="qname">geo:Project</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_Project" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_Project');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_Project" style="display:block"><img alt="Diagram" border="0" src="img/project_xsd_Element_geo_Project.jpeg" usemap="#project_xsd_Element_geo_Project" /><map name="project_xsd_Element_geo_Project" id="project_xsd_Element_geo_Project">
+                                 <area alt="project_xsd.tmp#ProjectType_status" href="project_xsd.html#ProjectType_status" coords="181,40,234,64" />
+                                 <area alt="project_xsd.tmp#ProjectType_managedBy" href="project_xsd.html#ProjectType_managedBy" coords="181,74,262,98" />
+                                 <area alt="project_xsd.tmp#ProjectType_specifiedBy" href="project_xsd.html#ProjectType_specifiedBy" coords="181,108,261,132" />
+                                 <area alt="project_xsd.tmp#ProjectType_initiatedDate" href="project_xsd.html#ProjectType_initiatedDate" coords="181,142,268,166" />
+                                 <area alt="project_xsd.tmp#ProjectType_completedDate" href="project_xsd.html#ProjectType_completedDate" coords="181,176,281,200" />
+                                 <area alt="commonTypes_xsd.tmp#RemarksGroup_notes" href="commonTypes_xsd.html#RemarksGroup_notes" coords="287,254,348,278" />
+                                 <area alt="commonTypes_xsd.tmp#RemarksGroup_associatedDocument" href="commonTypes_xsd.html#RemarksGroup_associatedDocument" coords="287,288,430,312" />
+                                 <area alt="commonTypes_xsd.tmp#RemarksGroup_extension" href="commonTypes_xsd.html#RemarksGroup_extension" coords="287,322,371,346" />
+                                 <area alt="commonTypes_xsd.tmp#RemarksGroup" href="commonTypes_xsd.html#RemarksGroup" coords="184,213,342,239" />
+                                 <area alt="project_xsd.tmp#ProjectType" href="project_xsd.html#ProjectType" coords="99,3,236,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="project_xsd.html#ProjectType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:ProjectType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type hierarchy</b></td>
+                        <td>
+                           <ul class="internal">
+                              <li class="internal"><b>AbstractFeatureType</b><ul class="internal">
+                                    <li class="internal"><b><a href="project_xsd.html#ProjectType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:ProjectType</a></b></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_Project" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_Project');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_Project" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Substitution Group Affiliation</b></td>
+                        <td>
+                           <ul class="internal">
+                              <li class="internal"><b>AbstractFeature</b></li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_Project" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_Project');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_Project" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Types </td>
+                                    <td><b><a href="geodesyML_xsd.html#GeodesyMLType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for geodesyML.xsd')">geo:GeodesyMLType</a></b>, <b><a href="project_xsd.html#ProjectPropertyType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:ProjectPropertyType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_Project" type="image" src="img/btM.gif" value="-" onclick="switchState('model_Project');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_Project" style="display:block"><b><a href="project_xsd.html#ProjectType_status" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:status{0,1}</a></b> , <b><a href="project_xsd.html#ProjectType_managedBy" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:managedBy{0,1}</a></b> , <b><a href="project_xsd.html#ProjectType_specifiedBy" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:specifiedBy{0,1}</a></b> , <b><a href="project_xsd.html#ProjectType_initiatedDate" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:initiatedDate{0,1}</a></b> , <b><a href="project_xsd.html#ProjectType_completedDate" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:completedDate{0,1}</a></b> , <b><a href="commonTypes_xsd.html#RemarksGroup_notes" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for commonTypes.xsd')">geo:notes{0,1}</a></b> , <b><a href="commonTypes_xsd.html#RemarksGroup_associatedDocument" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for commonTypes.xsd')">geo:associatedDocument*</a></b> , <b><a href="commonTypes_xsd.html#RemarksGroup_extension" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for commonTypes.xsd')">geo:extension{0,1}</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="commonTypes_xsd.html#RemarksGroup_associatedDocument" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for commonTypes.xsd')">geo:associatedDocument</a></b>, <b><a href="project_xsd.html#ProjectType_completedDate" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:completedDate</a></b>, <b><a href="commonTypes_xsd.html#RemarksGroup_extension" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for commonTypes.xsd')">geo:extension</a></b>, <b><a href="project_xsd.html#ProjectType_initiatedDate" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:initiatedDate</a></b>, <b><a href="project_xsd.html#ProjectType_managedBy" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:managedBy</a></b>, <b><a href="commonTypes_xsd.html#RemarksGroup_notes" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for commonTypes.xsd')">geo:notes</a></b>, <b><a href="project_xsd.html#ProjectType_specifiedBy" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:specifiedBy</a></b>, <b><a href="project_xsd.html#ProjectType_status" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:status</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_Project" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_Project');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_Project" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;geo:Project</span><span class="tT"> </span><span class="tAN">xmlns:geo=</span><span class="tAV">"urn:xml-gov-au:icsm:egeodesy:0.4"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:status</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:status&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:managedBy</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:managedBy&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:specifiedBy</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:specifiedBy&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:initiatedDate</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:initiatedDate&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:completedDate</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:completedDate&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:notes</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:notes&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:associatedDocument</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/geo:associatedDocument&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geo:extension</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geo:extension&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/geo:Project&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_Project" type="image" src="img/btM.gif" value="-" onclick="switchState('source_Project');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_Project" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> name=</span><span class="tAV">"Project"</span><span class="tAN"> substitutionGroup=</span><span class="tAV">"gml:AbstractFeature"</span><span class="tAN"> type=</span><span class="tAV">"geo:ProjectType"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/project.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="ProjectType_status"></a><div class="componentTitle">Element <span class="qname"><b><a href="project_xsd.html#ProjectType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:ProjectType</a></b> / geo:status</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_ProjectType_status" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ProjectType_status');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_ProjectType_status" style="display:block"><img alt="Diagram" border="0" src="img/project_xsd_Element_geo_status.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>CodeType</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_ProjectType_status" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_ProjectType_status');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_ProjectType_status" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_ProjectType_status" type="image" src="img/btM.gif" value="-" onclick="switchState('source_ProjectType_status');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_ProjectType_status" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"status"</span><span class="tAN"> type=</span><span class="tAV">"gml:CodeType"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/project.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="ProjectType_managedBy"></a><div class="componentTitle">Element <span class="qname"><b><a href="project_xsd.html#ProjectType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:ProjectType</a></b> / geo:managedBy</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_ProjectType_managedBy" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ProjectType_managedBy');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_ProjectType_managedBy" style="display:block"><img alt="Diagram" border="0" src="img/project_xsd_Element_geo_managedBy.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>CI_ResponsibleParty_PropertyType</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_ProjectType_managedBy" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_ProjectType_managedBy');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_ProjectType_managedBy" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_ProjectType_managedBy" type="image" src="img/btM.gif" value="-" onclick="switchState('source_ProjectType_managedBy');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_ProjectType_managedBy" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"managedBy"</span><span class="tAN"> type=</span><span class="tAV">"gmd:CI_ResponsibleParty_PropertyType"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/project.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="ProjectType_specifiedBy"></a><div class="componentTitle">Element <span class="qname"><b><a href="project_xsd.html#ProjectType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:ProjectType</a></b> / geo:specifiedBy</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_ProjectType_specifiedBy" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ProjectType_specifiedBy');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_ProjectType_specifiedBy" style="display:block"><img alt="Diagram" border="0" src="img/project_xsd_Element_geo_specifiedBy.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>CI_ResponsibleParty_PropertyType</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_ProjectType_specifiedBy" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_ProjectType_specifiedBy');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_ProjectType_specifiedBy" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_ProjectType_specifiedBy" type="image" src="img/btM.gif" value="-" onclick="switchState('source_ProjectType_specifiedBy');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_ProjectType_specifiedBy" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"specifiedBy"</span><span class="tAN"> type=</span><span class="tAV">"gmd:CI_ResponsibleParty_PropertyType"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/project.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="ProjectType_initiatedDate"></a><div class="componentTitle">Element <span class="qname"><b><a href="project_xsd.html#ProjectType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:ProjectType</a></b> / geo:initiatedDate</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_ProjectType_initiatedDate" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ProjectType_initiatedDate');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_ProjectType_initiatedDate" style="display:block"><img alt="Diagram" border="0" src="img/project_xsd_Element_geo_initiatedDate.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>TimePositionType</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_ProjectType_initiatedDate" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_ProjectType_initiatedDate');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_ProjectType_initiatedDate" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_ProjectType_initiatedDate" type="image" src="img/btM.gif" value="-" onclick="switchState('source_ProjectType_initiatedDate');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_ProjectType_initiatedDate" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"initiatedDate"</span><span class="tAN"> type=</span><span class="tAV">"gml:TimePositionType"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/project.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="ProjectType_completedDate"></a><div class="componentTitle">Element <span class="qname"><b><a href="project_xsd.html#ProjectType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:ProjectType</a></b> / geo:completedDate</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_ProjectType_completedDate" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ProjectType_completedDate');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_ProjectType_completedDate" style="display:block"><img alt="Diagram" border="0" src="img/project_xsd_Element_geo_completedDate.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>TimePositionType</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_ProjectType_completedDate" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_ProjectType_completedDate');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_ProjectType_completedDate" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_ProjectType_completedDate" type="image" src="img/btM.gif" value="-" onclick="switchState('source_ProjectType_completedDate');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_ProjectType_completedDate" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"completedDate"</span><span class="tAN"> type=</span><span class="tAV">"gml:TimePositionType"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/project.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="ProjectType"></a><div class="componentTitle">Complex Type <span class="qname">geo:ProjectType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_ProjectType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ProjectType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_ProjectType" style="display:block"><img alt="Diagram" border="0" src="img/project_xsd_Complex_Type_geo_ProjectType.jpeg" usemap="#project_xsd_Complex_Type_geo_ProjectType" /><map name="project_xsd_Complex_Type_geo_ProjectType" id="project_xsd_Complex_Type_geo_ProjectType">
+                                 <area alt="project_xsd.tmp#ProjectType_status" href="project_xsd.html#ProjectType_status" coords="217,0,270,24" />
+                                 <area alt="project_xsd.tmp#ProjectType_managedBy" href="project_xsd.html#ProjectType_managedBy" coords="217,34,298,58" />
+                                 <area alt="project_xsd.tmp#ProjectType_specifiedBy" href="project_xsd.html#ProjectType_specifiedBy" coords="217,68,297,92" />
+                                 <area alt="project_xsd.tmp#ProjectType_initiatedDate" href="project_xsd.html#ProjectType_initiatedDate" coords="217,102,304,126" />
+                                 <area alt="project_xsd.tmp#ProjectType_completedDate" href="project_xsd.html#ProjectType_completedDate" coords="217,136,317,160" />
+                                 <area alt="commonTypes_xsd.tmp#RemarksGroup_notes" href="commonTypes_xsd.html#RemarksGroup_notes" coords="323,214,384,238" />
+                                 <area alt="commonTypes_xsd.tmp#RemarksGroup_associatedDocument" href="commonTypes_xsd.html#RemarksGroup_associatedDocument" coords="323,248,466,272" />
+                                 <area alt="commonTypes_xsd.tmp#RemarksGroup_extension" href="commonTypes_xsd.html#RemarksGroup_extension" coords="323,282,407,306" />
+                                 <area alt="commonTypes_xsd.tmp#RemarksGroup" href="commonTypes_xsd.html#RemarksGroup" coords="220,173,378,199" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>extension of <b>AbstractFeatureType</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type hierarchy</b></td>
+                        <td>
+                           <ul class="internal">
+                              <li class="internal"><b>AbstractFeatureType</b><ul class="internal">
+                                    <li class="internal"><b><a href="project_xsd.html#ProjectType" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:ProjectType</a></b></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_ProjectType" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_ProjectType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_ProjectType" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="project_xsd.html#Project" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:Project</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_ProjectType" type="image" src="img/btM.gif" value="-" onclick="switchState('model_ProjectType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_ProjectType" style="display:block"><b><a href="project_xsd.html#ProjectType_status" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:status{0,1}</a></b> , <b><a href="project_xsd.html#ProjectType_managedBy" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:managedBy{0,1}</a></b> , <b><a href="project_xsd.html#ProjectType_specifiedBy" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:specifiedBy{0,1}</a></b> , <b><a href="project_xsd.html#ProjectType_initiatedDate" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:initiatedDate{0,1}</a></b> , <b><a href="project_xsd.html#ProjectType_completedDate" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:completedDate{0,1}</a></b> , <b><a href="commonTypes_xsd.html#RemarksGroup_notes" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for commonTypes.xsd')">geo:notes{0,1}</a></b> , <b><a href="commonTypes_xsd.html#RemarksGroup_associatedDocument" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for commonTypes.xsd')">geo:associatedDocument*</a></b> , <b><a href="commonTypes_xsd.html#RemarksGroup_extension" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for commonTypes.xsd')">geo:extension{0,1}</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="commonTypes_xsd.html#RemarksGroup_associatedDocument" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for commonTypes.xsd')">geo:associatedDocument</a></b>, <b><a href="project_xsd.html#ProjectType_completedDate" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:completedDate</a></b>, <b><a href="commonTypes_xsd.html#RemarksGroup_extension" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for commonTypes.xsd')">geo:extension</a></b>, <b><a href="project_xsd.html#ProjectType_initiatedDate" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:initiatedDate</a></b>, <b><a href="project_xsd.html#ProjectType_managedBy" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:managedBy</a></b>, <b><a href="commonTypes_xsd.html#RemarksGroup_notes" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for commonTypes.xsd')">geo:notes</a></b>, <b><a href="project_xsd.html#ProjectType_specifiedBy" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:specifiedBy</a></b>, <b><a href="project_xsd.html#ProjectType_status" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:status</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_ProjectType" type="image" src="img/btM.gif" value="-" onclick="switchState('source_ProjectType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_ProjectType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;complexType</span><span class="tAN"> name=</span><span class="tAV">"ProjectType"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;complexContent</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;extension</span><span class="tAN"> base=</span><span class="tAV">"gml:AbstractFeatureType"</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;sequence</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"status"</span><span class="tAN"> type=</span><span class="tAV">"gml:CodeType"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"managedBy"</span><span class="tAN"> type=</span><span class="tAV">"gmd:CI_ResponsibleParty_PropertyType"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"specifiedBy"</span><span class="tAN"> type=</span><span class="tAV">"gmd:CI_ResponsibleParty_PropertyType"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"initiatedDate"</span><span class="tAN"> type=</span><span class="tAV">"gml:TimePositionType"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;element</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> name=</span><span class="tAV">"completedDate"</span><span class="tAN"> type=</span><span class="tAV">"gml:TimePositionType"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;group</span><span class="tAN"> ref=</span><span class="tAV">"geo:RemarksGroup"</span><span class="tEl">/&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/sequence&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/extension&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/complexContent&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/complexType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/project.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="ProjectPropertyType"></a><div class="componentTitle">Complex Type <span class="qname">geo:ProjectPropertyType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>urn:xml-gov-au:icsm:egeodesy:0.4</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_ProjectPropertyType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_ProjectPropertyType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_ProjectPropertyType" style="display:block"><img alt="Diagram" border="0" src="img/project_xsd_Complex_Type_geo_ProjectPropertyType.jpeg" usemap="#project_xsd_Complex_Type_geo_ProjectPropertyType" /><map name="project_xsd_Complex_Type_geo_ProjectPropertyType" id="project_xsd_Complex_Type_geo_ProjectPropertyType">
+                                 <area alt="project_xsd.tmp#Project" href="project_xsd.html#Project" coords="263,93,354,117" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_ProjectPropertyType" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_ProjectPropertyType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_ProjectPropertyType" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Elements </td>
+                                    <td><b><a href="measurement_xsd.html#AbstractMeasurementType_fromProject" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for measurement.xsd')">geo:AbstractMeasurementType/geo:fromProject</a></b>, <b><a href="fieldMeasurement_xsd.html#SetupInstanceType_fromProject" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for fieldMeasurement.xsd')">geo:SetupInstanceType/geo:fromProject</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_ProjectPropertyType" type="image" src="img/btM.gif" value="-" onclick="switchState('model_ProjectPropertyType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_ProjectPropertyType" style="display:block"><b><a href="project_xsd.html#Project" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:Project</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="project_xsd.html#Project" target="mainFrame" title="urn:xml-gov-au:icsm:egeodesy:0.4" onclick="updatePageTitle('Schema documentation for project.xsd')">geo:Project</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_ProjectPropertyType" type="image" src="img/btM.gif" value="-" onclick="switchState('source_ProjectPropertyType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_ProjectPropertyType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;complexType</span><span class="tAN"> name=</span><span class="tAV">"ProjectPropertyType"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;sequence</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;element</span><span class="tAN"> ref=</span><span class="tAV">"geo:Project"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/sequence&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"gml:AssociationAttributeGroup"</span><span class="tEl">/&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/complexType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Schema location</b></td>
+                        <td>file:/Users/boss/dev/GeodesyML/schemas/project.xsd</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
+         </div>
+      </div><script type="text/javascript">
+         <!--
+                     // The namespace is the selected option in the TOC combo.
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                //--></script></body>
+</html>
